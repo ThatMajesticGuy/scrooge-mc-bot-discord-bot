@@ -6,6 +6,13 @@ var fs = require('fs');
 const sql = require("sqlite");
 sql.open("./score.sqlite");
 const config = require("commands/config.json");
+const moment = require('moment');
+var quotes = require('random-movie-quotes');
+var random_name = require('node-random-name');
+var knockknock = require('knock-knock-jokes');
+var bing = require('bing-image');
+const snekfetch = require('snekfetch');
+let money = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'));
 
 bot.login(config.token);
 
@@ -180,3 +187,163 @@ bot.on("message", (message) => {
   if (message.content.toUpperCase().includes("LOL")) {
     message.react("👌")
     }});
+
+
+
+
+bot.on("message", (message) => {
+
+  var args = message.content.split(' ').slice(1).join(' ');
+  var sender = message.author
+  var user = message.mentions.users.first()
+
+    var guildMoney = 0;
+    var guildUsers = 0;
+    var guildRichest = '';
+    var guildRichest$ = 0;
+
+
+  if (sender.bot) return;
+  if (!money[sender.id + message.guild.id]) money[sender.id + message.guild.id] = {}
+    if (!money[sender.id + message.guild.id].money) money[sender.id + message.guild.id].money = 500;
+    if (!money[sender.id + message.guild.id].lastDaily) money[sender.id + message.guild.id].lastDaily = "Daily None";
+    if (!money[sender.id + message.guild.id].username) money [sender.id + message.guild.id].username = message.author.tag;
+    fs.writeFile('./Storage/userData.json', JSON.stringify(money), (err) => {
+      if (err) console.error(err)
+        });
+
+        if (message.content.startsWith("sc!bank")) {
+          if (!user) {
+        var embed = new Discord.RichEmbed()
+                .setTitle(`Bank from ${message.author.username}`)
+                .setColor("#50f442")
+                .setThumbnail("https://fat.gfycat.com/FeminineDiscreteFlyinglemur.gif")
+                .addField("Money", `$${money[message.author.id + message.guild.id].money}`)
+                  message.channel.send({ embed: embed })
+        } else {
+                var embed = new Discord.RichEmbed()
+                .setTitle(`Bank from ${user.username}`)
+                .setColor("#50f442")
+                .setThumbnail("https://fat.gfycat.com/FeminineDiscreteFlyinglemur.gif")
+                .addField("Money", `$${money[user.id + message.guild.id].money}`)
+                  message.channel.send({ embed: embed })
+        }
+        };
+
+        
+
+         if (message.content.startsWith("sc!daily")) {
+    if (money[sender.id + message.guild.id].lastDaily != moment().format('L')) {
+      money[sender.id + message.guild.id].lastDaily = moment().format('L')
+    money[sender.id + message.guild.id].money += 100;
+    var embed3 = new Discord.RichEmbed()
+    .setColor("#50f442")
+    .setThumbnail("https://publicdomainvectors.org/photos/johnny_automatic_bag_of_money.png")
+    .setTitle("Daily Reward")
+    .addField("You have collected your daily reward of $100!", "Horray!")
+    message.channel.send({ embed: embed3 })
+  } else {
+
+    var embed2 = new Discord.RichEmbed()
+    .setColor("#50f442")
+    .setThumbnail("https://vignette.wikia.nocookie.net/battlefordreamislandfanfiction/images/9/9d/Dollar_Sign_Posey.png/revision/latest?cb=20170628015510")
+    .addField("You already collected your daily reward!", `You can collect it again in ${moment().endOf('day').fromNow()}`)
+    message.channel.send({ embed: embed2 })
+  }};
+
+
+  if (message.content === "sc!leaderboard") {
+    message.reply("Please do `sc!leaderboard server` or `sc!leaderboard global`")
+  };
+
+    if (message.content.startsWith("sc!leaderboard server" || "sc!leaderboard guild")) {
+    for (var i in money) {
+      if (i.endsWith(message.guild.id)) {
+
+        guildMoney += money[i].money;
+        guildUsers += 1;
+        if (money[i].money > guildRichest$) {
+
+          guildRichest$ = money[i].money;
+          guildRichest = money[i].username;
+          var embed = new Discord.RichEmbed()
+          .setTitle("Server leaderboard")
+          .setThumbnail("https://m.popkey.co/ae26e0/kdLqd.gif")
+          .setColor("#e2f442")
+          .addField("Server Users Count.", `${guildUsers}`)
+          .addField("Total Money", `${guildMoney}`)
+          .addField("Richest Account", `${guildRichest} with $${guildRichest$}`)
+        message.channel.send({ embed: embed });
+        fs.writeFile('Storage/userData.json', JSON.stringify(money), (err) => {
+          if (err) console.error(err)
+        });
+      }};
+    }};
+});
+
+bot.on("message", (message) => {
+  if (message.content.startsWith("sc!leaderboard global")) {
+    var globalMoney = 0;
+    var globalUsers = 0;
+    var globalRichest = '';
+    var globalRichest$ = 0;
+  for (var i in money) {
+    if (i.endsWith(message.guild.id)) {
+
+      globalMoney += money[i].money;
+      globalUsers += 1;
+      if (money[i].money > globalRichest$) {
+
+        globalRichest$ = money[i].money;
+        globalRichest = money[i].username;
+        var embed = new Discord.RichEmbed()
+        .setTitle("Global leaderboard")
+        .setThumbnail("https://m.popkey.co/ae26e0/kdLqd.gif")
+        .setColor("#e2f442")
+        .addField("Global Users Count.", `${globalUsers}`)
+        .addField("Total Money", `${globalMoney}`)
+        .addField("Richest Account", `${globalRichest} with $${globalRichest$}`)
+      message.channel.send({ embed: embed });
+      fs.writeFile('Storage/userData.json', JSON.stringify(money), (err) => {
+        if (err) console.error(err)
+      });
+    }};
+  }};
+});
+
+bot.on("message", (message) => {
+  if (message.content === "sc!quote") {
+    message.channel.send(quotes.getQuote())
+  };
+});
+
+bot.on("message", (message) => {
+  if (message.content === "sc!name") {
+    var bed = new Discord.RichEmbed()
+    .setTitle("Random name")
+    .setColor("#b642f4")
+    .addField(random_name(), "Name Above")
+    message.channel.send({ embed: bed });
+  }});
+
+bot.on("message", (message) => {
+  if (message.content === "sc!joke") {
+    message.channel.send(knockknock())
+  };
+});
+
+  bot.on("message", (message) => {
+  if (message.content.startsWith("sc!addRole")) {
+  var args = message.content.split(' ').slice(2).join(' ');
+      if (!message.member.hasPermission("MANAGE_ROLES_OR_PERMISSIONS")) return message.channel.send(`__**Access Denied**__\nYou must have __MANAGE_ROLES_OR_PERMISSIONS__ perms to use this command.`);
+ let member = message.mentions.members.first();
+  if (!member) return message.reply("You need to mention someone to add a role!")
+  if (!args) return message.reply("You didnt specify a role!")
+ let myRole = message.guild.roles.find("name", `${args}`);
+ if (!myRole) return message.reply("That role does not exist! Remember that when adding a role, it needs to be case sensitive!");
+       if (!message.guild.member(bot.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions or the role you are adding is higher or the same as my role!');
+  member.addRole(myRole).catch(console.error);
+  message.channel.send(`That user has been added to the ${args} role!`)
+    .catch((error) => {
+    message.channel.send(error)
+})}});
