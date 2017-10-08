@@ -6,7 +6,7 @@ var fs = require('fs');
 const sql = require("sqlite");
 sql.open("./score.sqlite");
 
-bot.login('MzYxMzAzMTE4NzY1MzU5MTA1.DLA-ew.-WpB5ysWQDIJcHO3yNBBXo2nino')
+bot.login('Token')
 
 bot.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
