@@ -5,8 +5,9 @@ const prefix = "sc!"
 var fs = require('fs');
 const sql = require("sqlite");
 sql.open("./score.sqlite");
+const config = require("commands/config.json");
 
-bot.login('Token')
+bot.login(config.token);
 
 bot.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
