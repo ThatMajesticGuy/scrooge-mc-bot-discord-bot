@@ -14,7 +14,7 @@ var bing = require('bing-image');
 const snekfetch = require('snekfetch');
 let money = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'));
 
-bot.login(config.token);
+bot.login(process.env.BOT_TOKEN);
 
 bot.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
