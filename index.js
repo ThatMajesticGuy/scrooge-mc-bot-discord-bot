@@ -5,7 +5,6 @@ const prefix = "sc!"
 var fs = require('fs');
 const sql = require("sqlite");
 sql.open("./score.sqlite");
-const config = require("commands/config.json");
 const moment = require('moment');
 var quotes = require('random-movie-quotes');
 var random_name = require('node-random-name');
