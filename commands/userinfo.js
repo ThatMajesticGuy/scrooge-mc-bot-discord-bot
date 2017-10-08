@@ -2,6 +2,7 @@ const Discord = require('discord.js')
 
 exports.run = (bot, message) => {
 
+
 let user = message.mentions.users.first()
 let member = message.guild.member(user)
 let member2 = message.guild.member(message.author)
