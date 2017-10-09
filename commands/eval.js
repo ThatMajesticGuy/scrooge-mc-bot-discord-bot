@@ -16,17 +16,16 @@ exports.run = async (bot, message) => {
 }
   const args = message.content.split(" ").slice(1);
   if (!args) return message.reply("Put what args you want")
- const code = args.join(" ");
-  try {
-      const evaled = client.clean(await eval(code));
-      if(message.flags.includes("d")) msg.delete();
-      if(message.flags.includes("s")) return;
-      message.channel.send(`\`\`\`xl\n${evaled}\n\`\`\``
-      );
+    try {
+      const code = args.join(" ");
+      let evaled = eval(code);
+
+      if (typeof evaled !== "string")
+        evaled = require("util").inspect(evaled);
+
+      message.channel.send(clean(evaled), {code:"xl"});
+    } catch (err) {
+      message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``);
+    }
   }
-  catch(err) {
-      if(message.flags[0] && message.flags[0] === 's')
-        return message.delete();
-      msg.channel.send(`\`ERROR\` \`\`\`xl\n${client.clean(err)}\n\`\`\``);
-  }
-};
+});
