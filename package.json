@@ -10,16 +10,6 @@
   "engines": {
     "node": "8.4.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/An-Idiots-Guide/guidebot.git"
-  },
-  "author": "The Idiot's Guide Community",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/An-Idiots-Guide/guidebot/issues"
-  },
-  "homepage": "https://github.com/An-Idiots-Guide/guidebot#readme",
   "dependencies": {
     "discord.js": "^11.2.1",
     "enmap": "^0.3.2",
