@@ -6,7 +6,6 @@ var fs = require('fs');
 const sql = require("sqlite");
 sql.open("./score.sqlite");
 const moment = require('moment');
-var quotes = require('random-movie-quotes');
 var random_name = require('node-random-name');
 var knockknock = require('knock-knock-jokes');
 var bing = require('bing-image');
@@ -310,11 +309,6 @@ bot.on("message", (message) => {
   }};
 });
 
-bot.on("message", (message) => {
-  if (message.content === "sc!quote") {
-    message.channel.send(quotes.getQuote())
-  };
-});
 
 bot.on("message", (message) => {
   if (message.content === "sc!name") {
