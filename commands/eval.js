@@ -23,16 +23,16 @@ exports.run = async (bot, message) => {
       if (typeof evaled !== "string")
         evaled = require("util").inspect(evaled);
         var embed2 = new Discord.RichEmbed()
-        .setTitle("Evaled:")
+        .setTitle("Evaled:", false)
         .setColor(randomColor)
-        .addField("Evaled: :inbox_tray:",  `\`\`\`js\n${args}\n\`\`\``)
-        .addField("Output: :outbox_tray:", clean(evaled), {code:"xl"})
+        .addField("Evaled: :inbox_tray:",  `\`\`\`js\n${args}\n\`\`\``, false)
+        .addField("Output: :outbox_tray:", clean(evaled), {code:"xl"}, false)
         message.channel.send({ embed: embed2 });
     } catch (err) {
       var embed3 = new Discord.RichEmbed()
       .setTitle("ERROR:")
       .setColor("#f44242")
-      .addField("Evaled: :inbox_tray:", `\`\`\`js\n${args}\n\`\`\``)
-      .addField("Output: :outbox_tray:", `\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``)
+      .addField("Evaled: :inbox_tray:", `\`\`\`js\n${args}\n\`\`\``, false)
+      .addField("Output: :outbox_tray:", `\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``, false)
       message.channel.send({ embed: embed3 });
     }};
