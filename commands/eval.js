@@ -26,8 +26,13 @@ exports.run = async (bot, message) => {
         .setTitle("Evaled:")
         .setColor(randomColor)
         .addField("Evaled: :inbox_tray:",  `\`\`\`js\n${args}\n\`\`\``)
-        .addField("Output: :outbot_tray:", clean(evaled), {code:"xl"})
-        message.channel.send({ embed: embed2 )};
+        .addField("Output: :outbox_tray:", clean(evaled), {code:"xl"})
+        message.channel.send({ embed: embed2 });
     } catch (err) {
-      message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``);
+      var embed3 = new Discord.RichEmbed()
+      .setTitle("ERROR:")
+      .setColor("#f44242")
+      .addField("Evaled: :inbox_tray:", `\`\`\`js\n${args}\n\`\`\``)
+      .addField("Output: :outbox_tray:", `\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``)
+      message.channel.send({ embed: embed3 });
     }};
