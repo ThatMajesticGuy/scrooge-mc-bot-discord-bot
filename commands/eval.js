@@ -26,7 +26,7 @@ exports.run = async (bot, message) => {
         .setTitle("Evaled:", false)
         .setColor(randomColor)
         .addField("Evaled: :inbox_tray:",  `\`\`\`js\n${args}\n\`\`\``, false)
-        .addField("Output: :outbox_tray:", clean(evaled), {code:"xl"}, false)
+        .addField("Output: :outbox_tray:", clean(evaled), false)
         message.channel.send({ embed: embed2 });
     } catch (err) {
       var embed3 = new Discord.RichEmbed()
