@@ -22,8 +22,12 @@ exports.run = async (bot, message) => {
 
       if (typeof evaled !== "string")
         evaled = require("util").inspect(evaled);
-
-      message.channel.send(clean(evaled), {code:"xl"});
+        var embed2 = require Discord.RichEmbed()
+        .setTitle("Evaled:")
+        .setColor(randomColor)
+        .addField("Evaled: :inbox_tray:",  `\`\`\`js\n${args}\n\`\`\`\`)
+        .addField("Output: :outbot_tray:", clean(evaled), {code:"xl"})
+        message.channel.send({ embed: embed2 )};
     } catch (err) {
       message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``);
     }};
