@@ -333,5 +333,5 @@ message.guild.createRole({
   name: `${args}`,
   color: `${args2}`,
 })
-  .then(role => message.channel.send(`Created role ${role}`))
+  .then(role => message.channel.send(`Created role ${args}`))
   .catch(console.error)
