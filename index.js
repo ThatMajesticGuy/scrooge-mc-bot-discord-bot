@@ -6,10 +6,6 @@ var fs = require('fs');
 const sql = require("sqlite");
 sql.open("./score.sqlite");
 const moment = require('moment');
-var random_name = require('node-random-name');
-var knockknock = require('knock-knock-jokes');
-var bing = require('bing-image');
-const snekfetch = require('snekfetch');
 let money = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'));
 
 bot.login(process.env.BOT_TOKEN);
@@ -310,20 +306,7 @@ bot.on("message", (message) => {
 });
 
 
-bot.on("message", (message) => {
-  if (message.content === "sc!name") {
-    var bed = new Discord.RichEmbed()
-    .setTitle("Random name")
-    .setColor("#b642f4")
-    .addField(random_name(), "Name Above")
-    message.channel.send({ embed: bed });
-  }});
 
-bot.on("message", (message) => {
-  if (message.content === "sc!joke") {
-    message.channel.send(knockknock())
-  };
-});
 
   bot.on("message", (message) => {
   if (message.content.startsWith("sc!addRole")) {
