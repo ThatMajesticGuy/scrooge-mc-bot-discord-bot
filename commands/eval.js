@@ -25,9 +25,9 @@ exports.run = async (bot, message) => {
         var embed2 = new Discord.RichEmbed()
         .setTitle("Evaled:")
         .setColor(randomColor)
-        .addField("Evaled: :inbox_tray:",  ````js\n${args}\n````)
+        .addField("Evaled: :inbox_tray:",  `\`\`\`js\n${args}\n\`\`\``)
         .addField("Output: :outbot_tray:", clean(evaled), {code:"xl"})
         message.channel.send({ embed: embed2 )};
     } catch (err) {
-      message.channel.send(``ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``);
+      message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``);
     }};
