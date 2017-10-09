@@ -335,3 +335,4 @@ message.guild.createRole({
 })
   .then(role => message.channel.send(`Created role ${args}`))
   .catch(console.error)
+  }});
