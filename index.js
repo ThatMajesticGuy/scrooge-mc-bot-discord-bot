@@ -156,32 +156,6 @@ bot.on("guildCreate", guild => {
   .catch(console.error);
 });
 
-bot.on("message", (message) => {
-  if (message.content.toUpperCase().includes("LMAO")) {
-    message.react("🇱")
-    .then(() => {
-  message.react("🇲")
-      .then(() => {
-  message.react("🇦")
-    .then(() => {
-  message.react("🇴")
-});
-  });
-    });
-  }});
-
-bot.on("message", (message) => {
-  if (message.content.toUpperCase().includes("LOL")) {
-    message.react("🇽")
-    .then(() => {
-    message.react("🇩")
-    })}});
-
-bot.on("message", (message) => {
-  if (message.content.toUpperCase().includes("LOL")) {
-    message.react("👌")
-    }});
-
 
 
 
