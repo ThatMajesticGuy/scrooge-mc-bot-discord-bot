@@ -323,3 +323,11 @@ bot.on("message", (message) => {
     .catch((error) => {
     message.channel.send(error)
 })}});
+
+bot.on("message", (message) => {
+  if (message.content.startsWith("sc!createRole")) {
+    var args = message.content.split(' ').slice(1).join(' ');
+    if (!args) return message.reply("You did not specify the role name!")
+   bot.createRole(args)
+    message.channel.send("Created that role!")
+  })};
