@@ -22,7 +22,7 @@ exports.run = async (bot, message) => {
 
       if (typeof evaled !== "string")
         evaled = require("util").inspect(evaled);
-        var embed2 = require Discord.RichEmbed()
+        var embed2 = new Discord.RichEmbed()
         .setTitle("Evaled:")
         .setColor(randomColor)
         .addField("Evaled: :inbox_tray:",  `\`\`\`js\n${args}\n\`\`\`\`)
