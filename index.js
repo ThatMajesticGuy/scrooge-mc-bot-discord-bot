@@ -328,7 +328,7 @@ bot.on("message", (message) => {
   if (message.content.startsWith("sc!createRole")) {
     var args = message.content.split(' ').slice(1).join(' ');
     if (!args) return message.reply("You did not specify the role name!");
-    if(!message.guild.me.hasPermission("MANAGE_ROLES_OR_PERMISSIONS")) return message.reply("I do not have permission to create roles!");
+    if (!message.guild.me.hasPermission("MANAGE_ROLES")) return message.reply("I do not have permission to create roles!");
 message.guild.createRole({
   name: `${args}`
 })
