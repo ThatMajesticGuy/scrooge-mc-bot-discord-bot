@@ -101,7 +101,11 @@ bot.on("message", (message) => {
 
 bot.on('guildMemberAdd', member => {
   const channel = member.guild.channels.find('name', 'welcome');
+   const channel2 = member.guild.channels.find('name', 'member-log');
+   const channel3 = member.guild.channels.find('name', 'user-log');
   if (!channel) return;
+  if (!channel2) return;
+  if (!channel3) retrun;
   var textArray = [
     `${member.user} has come here`,
     `${member.user},my man, you have entered the realm of severe depression`,
@@ -120,11 +124,17 @@ bot.on('guildMemberAdd', member => {
   ];
   var Meme = Math.floor(Math.random()*textArray.length);
   channel.send(`${textArray[Meme]}`)
+  channel2.send(`${textArray[Meme]}`)
+  channel3.send(`${textArray[Meme]}`)
 });
 
 bot.on('guildMemberRemove', member => {
   const channel = member.guild.channels.find('name', 'welcome');
+     const channel2 = member.guild.channels.find('name', 'member-log');
+   const channel3 = member.guild.channels.find('name', 'user-log');
   if (!channel) return;
+  if (!channel2) return;
+  if (!channel3) return;
   var textArray = [
     `***${member.user.tag}*** has died in the death zone`,
     `***${member.user.tag}*** has left the state of severe deppression`,
@@ -143,6 +153,8 @@ bot.on('guildMemberRemove', member => {
   ];
   var math = Math.floor(Math.random()*textArray.length);
   channel.send(`${textArray[math]}`)
+  channel2.send(`${textArray[math]}`)
+  channel3.send(`${textArray[math]}`)
 });
 
 
