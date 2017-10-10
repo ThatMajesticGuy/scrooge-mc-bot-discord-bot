@@ -103,9 +103,13 @@ bot.on('guildMemberAdd', member => {
   const channel = member.guild.channels.find('name', 'welcome');
    const channel2 = member.guild.channels.find('name', 'member-log');
    const channel3 = member.guild.channels.find('name', 'user-log');
+   const channel4 = member.guild.channels.find('name', 'memberlog');
+   const channel5 = member.guild.channels.find('name', 'userlog');
   if (!channel) return;
   if (!channel2) return;
-  if (!channel3) retrun;
+  if (!channel3) return;
+  if (!channel4) return;
+  if (!channel5) return;
   var textArray = [
     `${member.user} has come here`,
     `${member.user},my man, you have entered the realm of severe depression`,
@@ -126,12 +130,16 @@ bot.on('guildMemberAdd', member => {
   channel.send(`${textArray[Meme]}`)
   channel2.send(`${textArray[Meme]}`)
   channel3.send(`${textArray[Meme]}`)
+    channel4.send(`${textArray[Meme]}`)
+  channel5.send(`${textArray[Meme]}`)
 });
 
 bot.on('guildMemberRemove', member => {
   const channel = member.guild.channels.find('name', 'welcome');
      const channel2 = member.guild.channels.find('name', 'member-log');
    const channel3 = member.guild.channels.find('name', 'user-log');
+       const channel4 = member.guild.channels.find('name', 'memberlog');
+   const channel5 = member.guild.channels.find('name', 'userlog');
   if (!channel) return;
   if (!channel2) return;
   if (!channel3) return;
