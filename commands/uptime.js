@@ -14,8 +14,7 @@ String.prototype.toHHMMSS = function () {
     return time;
 }
 
-if(commandCheck("/uptime")){
     var time = process.uptime();
     var uptime = (time + "").toHHMMSS();
     message.channel.send(`I have been up for ${uptime}`);
-}
+};
