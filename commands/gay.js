@@ -7,4 +7,5 @@ var embed = new Discord.RichEmbed()
 .setTitle(":kiss_mm:")
 .setColor("#ff96ea")
 .addField(`Hey everyone! ${message.author.username} is gay with ${user.username}!`)
-message.channel.send({ embed: embed })
+message.channel.send({ embed: embed });
+};
