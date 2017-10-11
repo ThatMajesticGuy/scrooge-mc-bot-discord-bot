@@ -30,8 +30,12 @@ if (!message.content.startsWith(prefix)) return;
 
 bot.on("message", (message) => {
   if (message.content === prefix + "help") {
-    message.channel.send("You have got mail!")
     const randomColor = "#000000".replace(/0/g, function () { return (~~(Math.random() * 16)).toString(16); });
+    var embed1 = new Discord.RichEmbed()
+    .setTitle("Help")
+    .setColor(randomColor)
+    .addField("You have got mail! 📬", "Check your DM's!")
+    message.channel.send({ embed: embed1 })
 var embed = new Discord.RichEmbed()
 .setTitle("Fun Commands:")
 .setColor(randomColor)
