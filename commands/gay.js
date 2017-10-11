@@ -6,6 +6,6 @@ if (!user) return message.reply("You need to mention the gay man!")
 var embed = new Discord.RichEmbed()
 .setTitle(":kiss_mm:")
 .setColor("#ff96ea")
-.addField(`Hey everyone! ${message.author.username} is gay with ${user.username}!`, "How will they have a baby? \:meme:")
+.addField(`Hey everyone! ${message.author.username} is gay with ${user.username}!`, "How will they have a baby? :meme:")
 message.channel.send({ embed: embed });
 };
