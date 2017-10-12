@@ -105,7 +105,7 @@ var textArray = [
   var Meme = Math.floor(Math.random()*textArray.length);
   setInterval(function () { 
     bot.user.setGame(`${textArray[Meme]}`);
-}, 10000); 
+}, 1); 
 });
 
 bot.on("message", (message) => {
