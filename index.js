@@ -95,7 +95,15 @@ console.log(`${message.author.username} has triggered this command`)
 
 bot.on('ready', (message) => {
 console.log(`Ready to server in ${bot.channels.size} channels on ${bot.guilds.size} servers, for a total of ${bot.users.size} users.`);
-bot.user.setGame(`Type sc!help for help!`);
+var textArray [
+  "Made by ThatMajesticGuy",
+  `on ${bot.channels.size} channels`,
+  `on ${bot.guilds.size} servers`,
+  `with ${bot.users.size} people`,
+  "Type sc!help for help!"
+  ];
+  var Meme = Math.floor(Math.random()*textArray.length);
+  setInterval(function(){ bot.user.setGame(`${textArray[Meme]}`); }, 3000);
 });
 
 bot.on("message", (message) => {
