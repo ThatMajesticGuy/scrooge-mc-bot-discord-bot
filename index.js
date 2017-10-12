@@ -95,7 +95,7 @@ console.log(`${message.author.username} has triggered this command`)
 
 bot.on('ready', (message) => {
 console.log(`Ready to server in ${bot.channels.size} channels on ${bot.guilds.size} servers, for a total of ${bot.users.size} users.`);
-var textArray [
+var textArray = [
   "Made by ThatMajesticGuy",
   `on ${bot.channels.size} channels`,
   `on ${bot.guilds.size} servers`,
