@@ -32,7 +32,7 @@ exports.run = async (bot, message) => {
       var embed3 = new Discord.RichEmbed()
       .setTitle("ERROR:")
       .setColor("#f44242")
-      .addField("Evaled: :inbox_tray:", `\`\`\`js\n${args}\n\`\`\``, false)
-      .addField("Output: :outbox_tray:", `\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``, false)
+      .addField("Evaled: :inbox_tray:", `\`\`\`js\n${args}\n\`\`\``)
+      .addField("Output: :outbox_tray:", `\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``)
       message.channel.send({ embed: embed3 });
     }};
