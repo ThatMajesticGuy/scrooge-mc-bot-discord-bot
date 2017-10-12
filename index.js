@@ -103,7 +103,9 @@ var textArray [
   "Type sc!help for help!"
   ];
   var Meme = Math.floor(Math.random()*textArray.length);
-  setInterval(function(){ bot.user.setGame(`${textArray[Meme]}`); }, 3000);
+  setInterval(function () { 
+    bot.user.setGame(`${textArray[Meme]}`);
+}, 10000); 
 });
 
 bot.on("message", (message) => {
