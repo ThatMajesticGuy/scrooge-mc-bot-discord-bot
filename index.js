@@ -96,7 +96,7 @@ console.log(`${message.author.username} has triggered this command`)
 
 bot.on('ready', (message) => {
 console.log(`Ready to server in ${bot.channels.size} channels on ${bot.guilds.size} servers, for a total of ${bot.users.size} users.`);
-bot.user.setGame(`This bot is in a rewrite! Expect changes! || Type sc!help for help! || I am in a total of ${bot.guilds.size} servers with ${bot.users.size} users with a total of ${bot.channels.size} channels!`)
+bot.user.setGame("Bot rewrite happening! || Type sc!help for help!")
 });
 
 bot.on("message", (message) => {
