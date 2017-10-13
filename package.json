@@ -1,25 +1,22 @@
 {
-  "name": "guidebot",
-  "version": "2.0.3",
-  "description": "A boilerplate example bot with command handler and reloadable commands. Updated and Maintained by the Idiot's Guide Community",
+  "name": "Scrooge-Mc-Bot",
+  "version": "1.0.2",
+  "description": "A Beta Bot",
   "main": "node index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
   "engines": {
-    "node": "8.4.0"
+    "node": "8.6.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/An-Idiots-Guide/guidebot.git"
+    "url": "git+https://github.com/ThatMajesticGuy/scrooge-mc-bot-discord-bot"
   },
-  "author": "The Idiot's Guide Community",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/An-Idiots-Guide/guidebot/issues"
+  "author": "ThatMajesticGuy",
+  "license": "MIT"
   },
-  "homepage": "https://github.com/An-Idiots-Guide/guidebot#readme",
   "dependencies": {
     "discord.js": "^11.2.1",
     "enmap": "^0.3.2",
