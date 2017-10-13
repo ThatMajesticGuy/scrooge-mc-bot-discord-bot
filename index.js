@@ -51,6 +51,8 @@ var embed = new Discord.RichEmbed()
 .addField("sc!say", "Says something random in the channel.")
 .addField("sc!setgame", "Sets the bot's game, remember it puts -suggested by (your username), so dont be cheeky ;)")
 .addField("sc!totinos", "Puts the totinos lyrics in chat, useless command am i right")
+.addField("sc!8ball", "Ask the magic 8ball something!")
+.addField("sc!cat", "Get a random picture of a cat!")
 message.author.send({ embed: embed });
 var embed2 = new Discord.RichEmbed()
 .setTitle("Utility Commands:")
