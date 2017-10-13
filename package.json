@@ -15,8 +15,11 @@
     "url": "git+https://github.com/ThatMajesticGuy/scrooge-mc-bot-discord-bot"
   },
   "author": "ThatMajesticGuy",
-  "license": "MIT"
+  "license": "MIT",
+    "bugs": {
+    "url": "https://github.com/An-Idiots-Guide/guidebot/issues"
   },
+  "homepage": "https://github.com/An-Idiots-Guide/guidebot#readme",
   "dependencies": {
     "discord.js": "^11.2.1",
     "enmap": "^0.3.2",
