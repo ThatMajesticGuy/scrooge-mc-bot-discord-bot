@@ -33,6 +33,16 @@
     "discord-emoji": "^1.1.1",
     "roll": "^1.2.0",
     "cheerio": "^0.22.0",
-    "dateformat": "^3.0.2"
+    "dateformat": "^3.0.2",
+    "express": "^4.16.1",
+    "moment": "^2.18.1",
+    "memecord": "^3.0.0",
+    "random-movie-quotes": "^1.0.3",
+    "node-random-name": "^1.0.1",
+    "knock-knock-jokes": "^1.7.0",
+    "bing-image": "^0.1.0",
+    "discord-spoiler-bot": "^2.0.5",
+    "spongemock": "^0.0.5",
+    "snekfetch": "^3.3.1"
   }
 }
