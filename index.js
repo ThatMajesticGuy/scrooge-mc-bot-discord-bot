@@ -95,18 +95,7 @@ console.log(`${message.author.username} has triggered this command`)
 
 bot.on('ready', (message) => {
 console.log(`Ready to server in ${bot.channels.size} channels on ${bot.guilds.size} servers, for a total of ${bot.users.size} users.`);
-var textArray = [
-  "Made by ThatMajesticGuy",
-  `on ${bot.channels.size} channels`,
-  `on ${bot.guilds.size} servers`,
-  `with ${bot.users.size} people`,
-  "Type sc!help for help!"
-  ];
-  var Meme = Math.floor(Math.random()*textArray.length);
-  setInterval(function () { 
-    bot.user.setGame(`${textArray[Meme]}`);
-}, 1000); 
-});
+bot.user.setGame(`This bot is in a rewrite! Expect changes! || Type sc!help for help! || I am in a total of ${bot.guilds.size} servers with ${bot.users.size} users with a total of ${bot.channels.size} channels!`)
 
 bot.on("message", (message) => {
   if (message.content === "sc!contact") {
