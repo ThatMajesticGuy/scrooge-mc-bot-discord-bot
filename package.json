@@ -42,6 +42,7 @@
     "knock-knock-jokes": "^1.7.0",
     "bing-image": "^0.1.0",
     "discord-spoiler-bot": "^2.0.5",
-    "snekfetch": "^3.3.1"
+    "snekfetch": "^3.3.1",
+    "random-puppy": "^1.1.0"
   }
 }
