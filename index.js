@@ -39,6 +39,9 @@ bot.on('guildMemberAdd', member => {
     `${member.user} has come here to do everything that his destiny tells him to.`
   ];
   var Meme = Math.floor(Math.random()*textArray.length);
+  var role = member.guild.roles.find("name", "Scrooge Followers");
+  if (!role) return;
+  member.addRole(role);
   channel.send(`${textArray[Meme]}`)
   channel2.send(`${textArray[Meme]}`)
   channel3.send(`${textArray[Meme]}`)
