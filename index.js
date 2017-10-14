@@ -13,15 +13,7 @@ bot.login(process.env.BOT_TOKEN);
 
 bot.on('guildMemberAdd', member => {
   const channel = member.guild.channels.find('name', 'welcome');
-   const channel2 = member.guild.channels.find('name', 'member-log');
-   const channel3 = member.guild.channels.find('name', 'user-log');
-   const channel4 = member.guild.channels.find('name', 'memberlog');
-   const channel5 = member.guild.channels.find('name', 'userlog');
-  if (!channel) return;
-  if (!channel2) return;
-  if (!channel3) return;
-  if (!channel4) return;
-  if (!channel5) return;
+if (!channel) return;
   var textArray = [
     `${member.user} has come here`,
     `${member.user},my man, you have entered the realm of severe depression`,
@@ -43,21 +35,11 @@ bot.on('guildMemberAdd', member => {
   if (!role) return;
   member.addRole(role);
   channel.send(`${textArray[Meme]}`)
-  channel2.send(`${textArray[Meme]}`)
-  channel3.send(`${textArray[Meme]}`)
-    channel4.send(`${textArray[Meme]}`)
-  channel5.send(`${textArray[Meme]}`)
 });
 
 bot.on('guildMemberRemove', member => {
   const channel = member.guild.channels.find('name', 'welcome');
-     const channel2 = member.guild.channels.find('name', 'member-log');
-   const channel3 = member.guild.channels.find('name', 'user-log');
-       const channel4 = member.guild.channels.find('name', 'memberlog');
-   const channel5 = member.guild.channels.find('name', 'userlog');
   if (!channel) return;
-  if (!channel2) return;
-  if (!channel3) return;
   var textArray = [
     `***${member.user.tag}*** has died in the death zone`,
     `***${member.user.tag}*** has left the state of severe deppression`,
@@ -76,8 +58,6 @@ bot.on('guildMemberRemove', member => {
   ];
   var math = Math.floor(Math.random()*textArray.length);
   channel.send(`${textArray[math]}`)
-  channel2.send(`${textArray[math]}`)
-  channel3.send(`${textArray[math]}`)
 });
 
 
@@ -86,8 +66,8 @@ bot.on("guildCreate", guild => {
   const channel3 = guild.channels.find('name', 'general');
   if (!channel3) return guild.owner.send("Oh why hello there! Thank you for inviting me to this server! Here are a few things to get started! \n First, make a channel called #mod-log exactly like that if you are planning to use commands, if you dont and use the command, you will need to create the channel and waste time while a bad person is raiding your server. \n Secondly, if you want welcome messages, make a channel called #welcome exactly like that, it will also have goodbye messages also, for right now, we have pre made welcome messages, soon I will try to make it so you can make your own welcome message. \n Third. Make sure nobody blocks the bot, as some commands will not function if they have to DM the user. \n Finally, you MIGHT want to disable advertising by doing sc!advertising no, then it will block advertising discord servers. (THIS HAS NOT BEEN IMPLIMENTED YET, IT WILL SOON!) \nThat is it, have fun!")
   channel3.send("Oh why hello there! Thank you for inviting me to this server! Here are a few things to get started! \n First, make a channel called #mod-log exactly like that if you are planning to use commands, if you dont and use the command, you will need to create the channel and waste time while a bad person is raiding your server. \n Secondly, if you want welcome messages, make a channel called #welcome exactly like that, it will also have goodbye messages also, for right now, we have pre made welcome messages, soon I will try to make it so you can make your own welcome message. \n Third. Make sure nobody blocks the bot, as some commands will not function if they have to DM the user. \n Finally, you MIGHT want to disable advertising by doing sc!advertising no, then it will block advertising discord servers. (THIS HAS NOT BEEN IMPLIMENTED YET, IT WILL SOON!) \nThat is it, have fun!")
-  guild.createChannel("Music Channel")
-  .then(channel => console.log("Music channel has been created!"))
+guild.createChannel('welcome', 'text')
+  .then(channel => console.log(`Created new channel ${channel}`))
   .catch(console.error);
 });
 
