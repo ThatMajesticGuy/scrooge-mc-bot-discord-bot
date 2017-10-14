@@ -19,7 +19,7 @@ exports.run = function (bot, msg, args) {
     let results = roller.roll(args[0]);
   if (!results) return msg.channel.send("You must specify in dice notation ([number]d[number])")
 
-    msg.delete();
+    msg.delete(),
 
         `Total: ${results.result}`,
         `${[].concat.apply([], results.rolled).join(', ').substr(0, 1800)}`,
