@@ -6,7 +6,7 @@ let money = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'));
 
 bot.on('ready', (message) => {
 console.log(`Ready to server in ${bot.channels.size} channels on ${bot.guilds.size} servers, for a total of ${bot.users.size} users.`);
-bot.user.setGame("Type sc!help for help! | Bot rewrite happening, expect changes!")
+bot.user.setGame(`Type sc!help for help! | Version 1.2.1 | Changelog: (WIP) | in ${bot.guilds.size} servers!`)
 });
 
 bot.login(process.env.BOT_TOKEN);
@@ -31,7 +31,7 @@ if (!channel) return;
     `${member.user} has come here to do everything that his destiny tells him to.`
   ];
   var Meme = Math.floor(Math.random()*textArray.length);
-  var role = member.guild.roles.find("name", "Scrooge Followers");
+  var role = member.guild.roles.find("name", "Scrooge Followers"); // This is for my main server, if you make a role like this, it will add it, trying to work out how to prevent that...
   if (!role) return;
   member.addRole(role);
   channel.send(`${textArray[Meme]}`)
@@ -70,6 +70,8 @@ guild.createChannel('welcome', 'text')
   .then(channel => console.log(`Created new channel ${channel}`))
   .catch(console.error);
 });
+
+
 
 bot.on("message", (message) => {
 
