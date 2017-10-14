@@ -235,6 +235,7 @@ console.log(`${message.author.username} has triggered this command`)
       };
 
       if (command === "daily") {
+        var sender = message.author
         if (money[sender.id + message.guild.id].lastDaily != moment().format('L')) {
   money[sender.id + message.guild.id].lastDaily = moment().format('L')
 money[sender.id + message.guild.id].money += 100;
