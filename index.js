@@ -103,7 +103,7 @@ bot.on("message", (message) => {
       warnBuffer: 3,
       maxBuffer: 5, 
       interval: 1000, 
-      warningMessage: "stop spamming or I'll whack your head off.", 
+      warningMessage: "Please Stop Spamming, You will be kicked/banned!", 
       banMessage: "has been banned for spamming, anyone else?", 
     });
 
