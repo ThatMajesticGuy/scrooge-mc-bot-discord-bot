@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const fs = require('fs');
+const antispam = require("discord-anti-spam");
 let money = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'));
 
 
@@ -97,6 +98,14 @@ bot.on("message", (message) => {
       if (err) console.error(err)
     });
   });
+
+    antispam(bot, {
+      warnBuffer: 3,
+      maxBuffer: 5, 
+      interval: 1000, 
+      warningMessage: "stop spamming or I'll whack your head off.", 
+      banMessage: "has been banned for spamming, anyone else?", 
+    });
 
 
 var guilds = {};
