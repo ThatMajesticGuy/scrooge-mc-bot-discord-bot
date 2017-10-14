@@ -71,6 +71,13 @@ guild.createChannel('welcome', 'text')
   .catch(console.error);
 });
 
+bot.on("message", (message) => {
+  if (message.channel.id === "368795949751074818") {
+    if (NaN(message.content)) {
+      message.delete()
+      message.author.send("You need to send the bot's ID in order for your bot to be invited!")
+    }}});
+
 
 
 bot.on("message", (message) => {
