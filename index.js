@@ -43,7 +43,6 @@ bot.on('guildMemberRemove', member => {
   var textArray = [
     `***${member.user.tag}*** has died in the death zone`,
     `***${member.user.tag}*** has left the state of severe deppression`,
-    `***${member.user.tag}*** you have entered the realm of the totino gods, do you have anything to say?`,
     `Did ***${member.user.tag}*** leave or did he accidently hit the leave button instead of the change nickname button?`,
     `***${member.user.tag}*** was abused cause he was ugly, so he hit that leave button.`,
     `***${member.user.tag}*** joined, got triggered, left, simple math.`,
