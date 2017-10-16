@@ -2,6 +2,8 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const fs = require('fs');
 let money = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'));
+let currentIDs = fs.readFileSync("./blockedusers.json","utf8");
+let writeStream = fs.createWriteStream('./blockedusers.json', "utf8");
 
 
 bot.on('ready', (message) => {
@@ -66,8 +68,51 @@ bot.on("guildCreate", guild => {
   if (!channel3) return guild.owner.send("Oh why hello there! Thank you for inviting me to this server! Here are a few things to get started! \n First, make a channel called #mod-log exactly like that if you are planning to use commands, if you dont and use the command, you will need to create the channel and waste time while a bad person is raiding your server. \n Secondly, if you want welcome messages, make a channel called #welcome exactly like that, it will also have goodbye messages also, for right now, we have pre made welcome messages, soon I will try to make it so you can make your own welcome message. \n Third. Make sure nobody blocks the bot, as some commands will not function if they have to DM the user. \n Finally, you MIGHT want to disable advertising by doing sc!advertising no, then it will block advertising discord servers. (THIS HAS NOT BEEN IMPLIMENTED YET, IT WILL SOON!) \nThat is it, have fun! \n ***Offical Discord Server: https://discord.gg/qVyTKqC***")
   channel3.send("Oh why hello there! Thank you for inviting me to this server! Here are a few things to get started! \n First, make a channel called #mod-log exactly like that if you are planning to use commands, if you dont and use the command, you will need to create the channel and waste time while a bad person is raiding your server. \n Secondly, if you want welcome messages, make a channel called #welcome exactly like that, it will also have goodbye messages also, for right now, we have pre made welcome messages, soon I will try to make it so you can make your own welcome message. \n Third. Make sure nobody blocks the bot, as some commands will not function if they have to DM the user. \n Finally, you MIGHT want to disable advertising by doing sc!advertising no, then it will block advertising discord servers. (THIS HAS NOT BEEN IMPLIMENTED YET, IT WILL SOON!) \nThat is it, have fun! \n ***Offical Discord Server: https://discord.gg/qVyTKqC***")
 guild.createChannel('welcome', 'text')
-  .then(channel => console.log(`Created new channel ${channel}`))
+  .then(channel => console.log(`Created new channel ${channel}`)
   .catch(console.error);
+});
+
+bot.on("emojiUpdate", (emoji) => {
+  const channel = emoji.guild.channels.find('name', 'mod-log');
+  if (!channel) return;
+  var embed = new Discord.RichEmbed()
+  .setTitle("Emoji Update")
+  .setColor("#4bf442")
+  .setThumbnail(`${emoji}`)
+  .addField(`${emoji.name} has been updated`, `${emoji}`)
+  channel.send({ embed: embed })
+});
+
+bot.on("emojiCreate", (emoji) => {
+  const channel = emoji.guild.channels.find('name', 'mod-log');
+  if (!channel) return;
+  var embed = new Discord.RichEmbed()
+  .setTitle("Emoji Created")
+  .setColor("#4bf442")
+  .setThumbnail(`${emoji}`)
+  .addField(`${emoji.name} has been Created,` `${emoji}`)
+  channel.send({ embed: embed })
+});
+
+bot.on("messageDelete", (message) => {
+  const channel = message.guild.channels.find('name', 'mod-log');
+  if (!channel) return;
+  var embed = new Discord.RichEmbed()
+  .setTitle("Message Deleted")
+  .setColor("#4bf442")
+  .setThumbnail("https://cdn2.iconfinder.com/data/icons/happy-objects/512/dustbin_smile_smiley_emotion_happy-512.png")
+  .addField(`${message} has been deleted`, `${message}`)
+  channel.send({ embed: embed })
+});
+
+bot.on("emojiDelete", (emoji) => {
+  const channel = emoji.guild.channels.find('name', 'mod-log');
+  if (!channel) return;
+  var embed = new Discord.RichEmbed()
+  .setTitle("Emoji Deleted")
+  .setColor("#4bf442")
+  .addField(`${emoji} has been deleted`, `${emoji}`)
+  channel.send({ embed: embed })
 });
 
 bot.on("message", (message) => {
@@ -122,6 +167,8 @@ bot.on("message", message => {
   if(message.channel.type === 'dm') return message.reply("You cant use me in PM."); 
 
 try {
+      let blockedusers = fs.readFileSync("./blockedusers.json","utf8");
+if (blockedusers.indexOf(message.author.id) > -1) return message.reply('**ERROR:** User is blacklisted.');
   let commandFile = require(`./commands/${command}.js`);
   commandFile.run(bot, message, args);
 } catch (err) {
@@ -337,9 +384,7 @@ name: `${args}`
   
   if (command === "blacklist") {
 if (message.mentions.users.size < 1) return message.channel.send('**ERROR:** No user mentioned.').catch(console.error);
-let currentIDs = fs.readFileSync("./blockedusers.json","utf8");
 if (currentIDs.indexOf(user.id) > -1) return message.channel.send('**ERROR:** User is already blacklisted.');
-let writeStream = fs.createWriteStream('./blockedusers.json', "utf8");
 writeStream.write(`${user.tag} : ${user.id}\r\n`, "utf8")
 writeStream.write(`${currentIDs} \r\n`, "utf8")
 
@@ -351,12 +396,9 @@ message.channel.send(`${user} has been blacklisted from using all commands. Note
    const channel = message.guild.channels.find('name', 'mod-log');
     var embed = new Discord.RichEmbed()
     .setTitle("Blacklisted")
-    .setThumbnail("https://cdn1.iconfinder.com/data/icons/social-17/48/delete-user-512.png)
+    .setThumbnail("https://cdn1.iconfinder.com/data/icons/social-17/48/delete-user-512.png")
     .setDescription("User has been blacklisted")
-    .addField(`${user} has been blacklisted by ${message.author.tag}`, "They can not use any more commands.)
+    .addField(`${user} has been blacklisted by ${message.author.tag}`, "They can not use any more commands.")
              message.channel.send({ embed: embed })
                   };
                   });
-};
-
-});
