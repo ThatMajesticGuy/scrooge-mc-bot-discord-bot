@@ -333,5 +333,30 @@ name: `${args}`
 })
 .then(role => message.channel.send(`Created role ${args}`))
 .catch(console.error)
+}
+  
+  if (command === "blacklist") {
+if (message.mentions.users.size < 1) return message.channel.send('**ERROR:** No user mentioned.').catch(console.error);
+let currentIDs = fs.readFileSync("./blockedusers.json","utf8");
+if (currentIDs.indexOf(user.id) > -1) return message.channel.send('**ERROR:** User is already blacklisted.');
+let writeStream = fs.createWriteStream('./blockedusers.json', "utf8");
+writeStream.write(`${user.tag} : ${user.id}\r\n`, "utf8")
+writeStream.write(`${currentIDs} \r\n`, "utf8")
+
+writeStream.on('finish', () => {
+console.log('wrote all data to file');
+});
+writeStream.end();
+message.channel.send(`${user} has been blacklisted from using all commands. Note that there is no way to revert this right now...`)
+   const channel = message.guild.channels.find('name', 'mod-log');
+    var embed = new Discord.RichEmbed()
+    .setTitle("Blacklisted")
+    .setThumbnail("https://cdn1.iconfinder.com/data/icons/social-17/48/delete-user-512.png)
+    .setDescription("User has been blacklisted")
+    .addField(`${user} has been blacklisted by ${message.author.tag}`, "They can not use any more commands.)
+             message.channel.send({ embed: embed })
+                  };
+                  });
 };
+
 });
