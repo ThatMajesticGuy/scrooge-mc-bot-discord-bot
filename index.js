@@ -167,13 +167,14 @@ bot.on("message", message => {
   if(message.channel.type === 'dm') return message.reply("You cant use me in PM."); 
 
 try {
-      let blockedusers = fs.readFileSync("./blockedusers.json","utf8");
+ let commandFile = require(`./commands/${command}.js`);
+ let blockedusers = fs.readFileSync("./blockedusers.json","utf8");
 if (blockedusers.indexOf(message.author.id) > -1) return message.reply('**ERROR:** User is blacklisted.');
-  let commandFile = require(`./commands/${command}.js`);
-  commandFile.run(bot, message, args);
+ commandFile.run(bot, message, args);
 } catch (err) {
-  console.error(err);
+ console.error(err);
 }
+
 
 
 
