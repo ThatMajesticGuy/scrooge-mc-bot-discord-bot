@@ -78,7 +78,7 @@ bot.on("emojiUpdate", (emoji) => {
   var embed = new Discord.RichEmbed()
   .setTitle("Emoji Update")
   .setColor("#4bf442")
-  .setThumbnail(`${emoji}`)
+  .setThumbnail(`${emoji.url}`)
   .addField(`${emoji.name} has been updated`, `${emoji}`)
   channel.send({ embed: embed })
 });
@@ -89,7 +89,7 @@ bot.on("emojiCreate", (emoji) => {
   var embed = new Discord.RichEmbed()
   .setTitle("Emoji Created")
   .setColor("#4bf442")
-  .setThumbnail(`${emoji}`)
+  .setThumbnail(`${emoji.url}`)
   .addField(`${emoji.name} has been Created,` `${emoji}`)
   channel.send({ embed: embed })
 });
@@ -101,7 +101,7 @@ bot.on("messageDelete", (message) => {
   .setTitle("Message Deleted")
   .setColor("#4bf442")
   .setThumbnail("https://cdn2.iconfinder.com/data/icons/happy-objects/512/dustbin_smile_smiley_emotion_happy-512.png")
-  .addField(`${message} has been deleted`, `${message}`)
+  .addField(`${message.author.username} has deleted this message:`, `${message}`)
   channel.send({ embed: embed })
 });
 
