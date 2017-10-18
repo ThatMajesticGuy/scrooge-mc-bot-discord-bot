@@ -182,9 +182,10 @@ bot.on("message", message => {
 
 try {
  let commandFile = require(`./commands/${command}.js`);
+  const channel = message.guild.channels.find('name', `${thisConf.modLogChannel}`);
  let blockedusers = fs.readFileSync("./blockedusers.json","utf8");
 if (blockedusers.indexOf(message.author.id) > -1) return message.reply('**ERROR:** User is blacklisted.');
- commandFile.run(bot, message, args);
+ commandFile.run(bot, message, args, channel);
 } catch (err) {
  console.error(err);
 }
