@@ -181,6 +181,8 @@ bot.on("message", message => {
   if(message.channel.type === 'dm') return message.reply("You cant use me in PM."); 
 
 try {
+    const thisConf = bot.settings.get(message.guild.id);
+      const channel = message.guild.channels.find('name', `${thisConf.modLogChannel}`);
  let commandFile = require(`./commands/${command}.js`);
  let blockedusers = fs.readFileSync("./blockedusers.json","utf8");
 if (blockedusers.indexOf(message.author.id) > -1) return message.reply('**ERROR:** User is blacklisted.');
