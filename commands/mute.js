@@ -7,8 +7,6 @@ if(!member) return message.reply("My dude, you need to mention somone to mute th
 let muteRole = message.guild.roles.find("name", "Muted");
 if(!muteRole) return message.reply("Make a role called Muted rn my dud");
 member.addRole(muteRole.id);
-const channel = member.guild.channels.find('name', 'mod-log');
-if (!channel) return message.reply("Make sure you have a channel called mod-log!");
 var embed = new Discord.RichEmbed()
 .setTitle("Mute")
 .setColor("#ff751a")
