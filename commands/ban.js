@@ -1,14 +1,12 @@
 const Discord = require('discord.js');
 const config = require("./config.json");
 
-exports.run = async (bot, message, args) => {
+exports.run = async (bot, message, args, channel) => {
     if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send(`__**Access Denied**__\nYou must have __BAN_MEMBERS__ perms to use this command.`);
     let member = message.mentions.members.first();
     if(!member)
       return message.reply("Please mention a valid member of this server");
    if(member.id == config.ownerID) return message.channel.send("You shall not ban the all mighty majestic!")
-      const channel = member.guild.channels.find('name', 'mod-log');
-      if (!channel) return message.reply("Make sure you have a channel called mod-log!");
     if(!member.bannable)
       return message.reply("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
 
