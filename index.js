@@ -174,7 +174,7 @@ bot.on("message", message => {
 
   if (message.author.bot) return;
   const prefix = guilds[message.guild.id].prefix; 
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args = message.content.split(" ");
   let command = args[0];
   command = command.slice(prefix.length);
   if(!message.content.startsWith(prefix)) return;
