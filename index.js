@@ -1,14 +1,28 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const fs = require('fs');
+const Enmap = require('enmap');
+const EnmapLevel = require('enmap-level');
+
 let money = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'));
 let currentIDs = fs.readFileSync("./blockedusers.json","utf8");
 let writeStream = fs.createWriteStream('./blockedusers.json', "utf8");
+
+bot.settings = new Enmap({name: 'settings', persistent: true});
+
+const defaultSettings = {
+  modLogChannel: "mod-log"
+}
 
 
 bot.on('ready', (message) => {
 console.log(`Ready to server in ${bot.channels.size} channels on ${bot.guilds.size} servers, for a total of ${bot.users.size} users.`);
 bot.user.setGame(`Type sc!help for help! | Version 1.2.1 | Changelog: (WIP) | in ${bot.guilds.size} servers!`)
+  bot.guilds.forEach((g) => {
+    if (!bot.settings.has(g.id)) {
+      bot.settings.set(g.id, defaultSettings);
+    }
+  });
 });
 
 bot.login(process.env.BOT_TOKEN);
@@ -261,6 +275,19 @@ console.log(`${message.author.username} has triggered this command`)
            if (command === "contact") {
              message.author.send("Contact `ScroogeMcBot@gmail.com` if you contact any errors, anything like ***You have a really bad bot 0/10***, they will be largley ignored, as this bot is in beta, second, please accept that nothing is perfect in this bot, and try to give constructive criticism, thanks in advance, \n -ThatMajesticGuy \n ***PS: If you have a problem that needs to be solved IMMEDIATLEY, go to this discord server to notify me: https://discord.gg/qVyTKqC***")
            }
+  
+    if (command === "sc!setModLog") {
+  const thisConf = bot.settings.get(message.guild.id);
+thisConf.modLogChannel = `${message.channel.name}`;
+
+bot.settings.set(message.guild.id, thisConf);
+var embed = new Discord.RichEmbed()
+.setTitle("Mod Log Change")
+.setColor("#4286f4")
+.addField("There is a new mod log channel", `The channel is ${thisConf.modLogChannel}`)
+channel.send({ embed: embed })
+}
+
 
            if (command === "bank") {
              var user = message.mentions.users.first()
