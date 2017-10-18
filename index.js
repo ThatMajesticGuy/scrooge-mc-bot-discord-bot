@@ -286,7 +286,7 @@ var embed = new Discord.RichEmbed()
 .setTitle("Mod Log Change")
 .setColor("#4286f4")
 .addField("There is a new mod log channel", `The channel is ${thisConf.modLogChannel}`)
-channel.send({ embed: embed })
+message.channel.send({ embed: embed })
 }
 
 
