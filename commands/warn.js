@@ -5,7 +5,6 @@ exports.run = (bot, message, args, channel) => {
   if (!args) return message.reply("What was the user doing that needed to be warned?")
 let user = message.mentions.users.first()
 if (!user) return message.reply("Mention someone to warn them!")
-  if(user.id == config.ownerID) return message.channel.send("You shall not warn the all mighty majestic!")
 message.channel.send(`***${user}*** has been warned!`)
 user.send(`You have been warned in ***${message.guild.name}*** for ***${args}***`)
 var embed = new Discord.RichEmbed()
