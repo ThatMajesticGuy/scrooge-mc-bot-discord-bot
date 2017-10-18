@@ -1,7 +1,7 @@
 const ms = require('ms');
 const Discord = require('discord.js');
 
-exports.run = (bot, message, args) => {
+exports.run = (bot, message, args, channel) => {
   let time = args.join(' ');
   let validUnlocks = ['release', 'unlock']
   const channel = message.guild.channels.find('name', 'mod-log');
@@ -23,6 +23,8 @@ console.log(error);
     message.channel.send(`Alrighty! Lockdown has started for this channel for ${ms(ms(time), { long:true })}`)
     var embed = new Discord.RichEmbed()
     .setTitle("Lockdown")
+    .setColor("#80d4ff")
+    .setThumbnail("http://www.streetgangs.com/wp-content/uploads/2010/03/behind_bars_xsmall.jpg")
     .addField(`Lockdown by ${message.author.username}`, `Lasts for ${ms(ms(time), { long:true })}`)
 channel.send({ embed: embed }).then(() => {
 
@@ -32,6 +34,12 @@ channel.send({ embed: embed }).then(() => {
       }).then(message.channel.send("Lockdown has ended, you are now freely to send what you want"))
       delete bot.lockit[message.channel.id];
     }, ms(time));
+  var embed2 = new Discord.RichEmbed()
+  .setTitle("Lockdown Ended")
+.setColor("#80d4ff")
+  .setThumbnail("https://news.pindula.co.zw/wp-content/uploads/2017/01/Prison-break.jpg")
+  .addField("Lockdown has ended", "Users are free to talk")
+  channel.send({ embed: embed2 })
   }).catch(error => {
     console.log(error)
   });
