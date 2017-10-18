@@ -3,7 +3,8 @@ const mapping = '¡"#$%⅋,)(*+\'-˙/0ƖᄅƐㄣϛ9ㄥ86:;<=>?@∀qƆpƎℲפHI�
 // Start with the character '!'
 const OFFSET = '!'.charCodeAt(0);
 
-exports.run = (bot, msg, args) => {
+exports.run = (bot, msg) => {
+      var args = msg.content.split(' ').slice(1).join(' ');
     if (args.length < 1) {
         msg.channel.send('You must provide text to flip!');
     }
