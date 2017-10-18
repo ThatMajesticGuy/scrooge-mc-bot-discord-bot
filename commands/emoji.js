@@ -24,7 +24,7 @@ const mapping = {
 });
 
 exports.run = (bot, msg) => {
-      var args = message.content.split(' ').slice(1).join(' ');
+      var args = msg.content.split(' ').slice(1).join(' ');
     if (args.length < 1) {
         message.channel.send('You must provide some text to emoji-fy!');
     }
