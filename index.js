@@ -182,7 +182,6 @@ bot.on("message", message => {
 
 try {
  let commandFile = require(`./commands/${command}.js`);
-  const channel = message.guild.channels.find('name', `${thisConf.modLogChannel}`);
  let blockedusers = fs.readFileSync("./blockedusers.json","utf8");
 if (blockedusers.indexOf(message.author.id) > -1) return message.reply('**ERROR:** User is blacklisted.');
  commandFile.run(bot, message, args, channel);
@@ -279,6 +278,7 @@ console.log(`${message.author.username} has triggered this command`)
   
     if (command === "setModLog") {
   const thisConf = bot.settings.get(message.guild.id);
+      const channel = message.guild.channels.find('name', `${thisConf.modLogChannel}`);
 thisConf.modLogChannel = `${message.channel.name}`;
 
 bot.settings.set(message.guild.id, thisConf);
