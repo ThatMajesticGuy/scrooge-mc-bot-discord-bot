@@ -9,6 +9,7 @@ if(!muteRole) return message.reply("Make a role called Muted rn my dud");
 member.addRole(muteRole.id);
 var embed = new Discord.RichEmbed()
 .setTitle("Mute")
+.setThumbnail(`${member.displayAvatarURL}`)
 .setColor("#ff751a")
 .addField(`${member.user.tag} has been muted`, `Been muted by ${message.author.tag}`)
 .addField("User's ID", `${member.id}`)
