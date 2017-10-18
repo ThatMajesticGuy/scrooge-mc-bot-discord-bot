@@ -1,5 +1,6 @@
    const Discord = require ('discord.js')
-   exports.run = (bot, message, args) => {
+   exports.run = (bot, message) => {
+        var args = message.content.split(' ').slice(1).join(' ');
      if (!args) return message.reply("You need to focus and conentrate and wish upon your dream!")
         var textArray = ["It is certain",
                                         "It is decidedly so",
