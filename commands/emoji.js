@@ -23,7 +23,8 @@ const mapping = {
     mapping[c] = mapping[c.toUpperCase()] = ` :regional_indicator_${c}:`;
 });
 
-exports.run = (bot, msg, args) => {
+exports.run = (bot, msg) => {
+      var args = message.content.split(' ').slice(1).join(' ');
     if (args.length < 1) {
         message.channel.send('You must provide some text to emoji-fy!');
     }
