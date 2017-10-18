@@ -276,7 +276,7 @@ console.log(`${message.author.username} has triggered this command`)
              message.author.send("Contact `ScroogeMcBot@gmail.com` if you contact any errors, anything like ***You have a really bad bot 0/10***, they will be largley ignored, as this bot is in beta, second, please accept that nothing is perfect in this bot, and try to give constructive criticism, thanks in advance, \n -ThatMajesticGuy \n ***PS: If you have a problem that needs to be solved IMMEDIATLEY, go to this discord server to notify me: https://discord.gg/qVyTKqC***")
            }
   
-    if (command === "sc!setModLog") {
+    if (command === "setModLog") {
   const thisConf = bot.settings.get(message.guild.id);
 thisConf.modLogChannel = `${message.channel.name}`;
 
