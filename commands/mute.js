@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-exports.run = (bot, message, args) => {
+exports.run = (bot, message, args, channel) => {
 
 let member = message.mentions.members.first();
 if(!member) return message.reply("My dude, you need to mention somone to mute them")
