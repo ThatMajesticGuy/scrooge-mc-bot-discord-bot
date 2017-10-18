@@ -16,7 +16,8 @@ function getText(children) {
     }).join('');
 }
 
-exports.run = async (bot, msg, args) => {
+exports.run = async (bot, msg) => {
+      var args = message.content.split(' ').slice(1).join(' ');
     if (args.length < 1) {
         msg.channel.send('You must enter something to search for!');
     }
