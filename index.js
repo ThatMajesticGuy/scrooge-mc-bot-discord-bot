@@ -76,6 +76,12 @@ bot.on('guildMemberRemove', member => {
 });
 
 
+bot.on("message", (message) => {
+  if (message.content.includes("sc!")) {
+const args = message.content.split(" ").slice(0);
+console.log(`${message.author.tag} sent this command: ${args}`);
+}});
+
 
 bot.on("guildCreate", guild => {
   const channel3 = guild.channels.find('name', 'general');
