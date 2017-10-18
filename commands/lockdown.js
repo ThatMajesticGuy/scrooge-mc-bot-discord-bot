@@ -2,7 +2,8 @@ const ms = require('ms');
 const Discord = require('discord.js');
 
 exports.run = (bot, message, args, channel) => {
-  let time = args.join(' ');
+    var args2 = message.content.split(' ').slice(1).join(' ');
+  let time = args2.join(' ');
   let validUnlocks = ['release', 'unlock']
   const channel = message.guild.channels.find('name', 'mod-log');
   if (!channel) return message.reply("Make sure you have a channel called mod-log!");
