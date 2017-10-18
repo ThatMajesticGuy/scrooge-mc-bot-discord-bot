@@ -1,8 +1,7 @@
 const Discord = require('discord.js')
 const config = require("./config.json");
 
-exports.run = (bot, message) => {
-  var args = message.content.split(' ').slice(2).join(' ');
+exports.run = (bot, message, args, channel) => {
   if (!args) return message.reply("What was the user doing that needed to be warned?")
 let user = message.mentions.users.first()
 if (!user) return message.reply("Mention someone to warn them!")
