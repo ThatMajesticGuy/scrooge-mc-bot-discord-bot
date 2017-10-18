@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const config = require("./config.json");
 
 
-exports.run = async (bot, message, args) => {
+exports.run = async (bot, message, args, channel) => {
   if (!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send(`__**Access Denied**__\nYou must have __KICK_MEMBERS__ perms to use this command.`);
 
     let member = message.mentions.members.first();
@@ -16,8 +16,6 @@ exports.run = async (bot, message, args) => {
     if(!reason)
       return message.reply("Please indicate a reason for the kick!");
   
-        const channel = member.guild.channels.find('name', 'mod-log');
-      if (!channel) return message.reply("Make sure you have a channel called mod-log!");
 
     await member.ban(reason)
       .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
