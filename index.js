@@ -199,7 +199,7 @@ try {
  let commandFile = require(`./commands/${command}.js`);
  let blockedusers = fs.readFileSync("./blockedusers.json","utf8");
 if (blockedusers.indexOf(message.author.id) > -1) return message.channel.send({ embed: embed })
- commandFile.run(bot, message, channel);
+ commandFile.run(bot, message, args, channel);
 } catch (err) {
  console.error(err);
 }
