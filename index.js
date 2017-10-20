@@ -180,8 +180,8 @@ bot.on("message", message => {
 
   if (message.author.bot) return;
   const prefix = guilds[message.guild.id].prefix; 
-    const args = message.content.split(" ");
-  let command = args[0];
+    const args1 = message.content.split(" ");
+  let command = args1[0];
   command = command.slice(prefix.length);
   if(!message.content.startsWith(prefix)) return;
   if(message.channel.type === 'dm') return message.reply("You cant use me in PM."); 
@@ -189,6 +189,7 @@ bot.on("message", message => {
 try {
     const thisConf = bot.settings.get(message.guild.id);
       const channel = message.guild.channels.find('name', `${thisConf.modLogChannel}`);
+   const args = message.content.split(' ').slice(1).join(' ');
   var embed = new Discord.RichEmbed()
   .setTitle("Blacklisted :x:")
   .setThumbnail("http://images.mentalfloss.com/sites/default/files/letterx.jpg?resize=1100x740")
