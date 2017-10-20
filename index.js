@@ -446,3 +446,7 @@ message.channel.send(`${user} has been blacklisted from using all commands. Note
              message.channel.send({ embed: embed })
                   };
                   });
+
+process.on('unhandledRejection', error => {
+  console.error(`Uncaught Promise Error: \n${error.stack}`);
+});
