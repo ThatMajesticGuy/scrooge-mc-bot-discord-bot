@@ -17,7 +17,7 @@ exports.run = async (bot, message) => {
   if (!args) return message.reply("Put what args you want")
     try {
          if(message.author.id !== config.ownerID) return message.channel.send({ embed: embed });
-      const code = args.join(" ");
+        const code = args.join(" ");
       let evaled = eval(code);
 
       if (typeof evaled !== "string")
@@ -29,6 +29,7 @@ exports.run = async (bot, message) => {
         .addField("Output: :outbox_tray:", `\`\`\`js\n${clean(evaled)}\n\`\`\``)
         message.channel.send({ embed: embed2 });
     } catch (err) {
+        const code = args.join(" ");
       var embed3 = new Discord.RichEmbed()
       .setTitle("ERROR:")
       .setColor("#f44242")
