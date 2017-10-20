@@ -189,10 +189,16 @@ bot.on("message", message => {
 try {
     const thisConf = bot.settings.get(message.guild.id);
       const channel = message.guild.channels.find('name', `${thisConf.modLogChannel}`);
+  var embed = new Discord.RichEmbed()
+  .setTitle("Blacklisted :x:")
+  .setThumbnail("http://images.mentalfloss.com/sites/default/files/letterx.jpg?resize=1100x740")
+  .setColor("#f7593d")
+  .addField("You are blacklisted from Scrooge Mc Bot", "You cant use any commands... If this is an error, please contact the server's admins")
+  
  let commandFile = require(`./commands/${command}.js`);
  let blockedusers = fs.readFileSync("./blockedusers.json","utf8");
-if (blockedusers.indexOf(message.author.id) > -1) return message.reply('**ERROR:** User is blacklisted.');
- commandFile.run(bot, message, args, channel);
+if (blockedusers.indexOf(message.author.id) > -1) return message.channel.send({ embed: embed })
+ commandFile.run(bot, message, channel);
 } catch (err) {
  console.error(err);
 }
