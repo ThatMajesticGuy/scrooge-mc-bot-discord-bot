@@ -104,7 +104,8 @@ bot.on("message", (message) => {
 }}});
 
 bot.on("emojiUpdate", (emoji) => {
-  const channel = emoji.guild.channels.find('name', 'mod-log');
+    const thisConf = bot.settings.get(message.guild.id);
+  const channel = emoji.guild.channels.find('name', `${thisConf.modLogChannel}`);
   if (!channel) return;
   var embed = new Discord.RichEmbed()
   .setTitle("Emoji Update")
@@ -115,7 +116,8 @@ bot.on("emojiUpdate", (emoji) => {
 });
 
 bot.on("emojiCreate", (emoji) => {
-  const channel = emoji.guild.channels.find('name', 'mod-log');
+    const thisConf = bot.settings.get(message.guild.id);
+  const channel = emoji.guild.channels.find('name', `${thisConf.modLogChannel}`);
   if (!channel) return;
   var embed = new Discord.RichEmbed()
   .setTitle("Emoji Created")
@@ -126,7 +128,8 @@ bot.on("emojiCreate", (emoji) => {
 });
 
 bot.on("messageDelete", (message) => {
-  const channel = message.guild.channels.find('name', 'mod-log');
+   const thisConf = bot.settings.get(message.guild.id);
+  const channel = emoji.guild.channels.find('name', `${thisConf.modLogChannel}`);
   if (!channel) return;
   var embed = new Discord.RichEmbed()
   .setTitle("Message Deleted")
@@ -137,7 +140,8 @@ bot.on("messageDelete", (message) => {
 });
 
 bot.on("emojiDelete", (emoji) => {
-  const channel = emoji.guild.channels.find('name', 'mod-log');
+  const thisConf = bot.settings.get(message.guild.id);
+  const channel = emoji.guild.channels.find('name', `${thisConf.modLogChannel}`);
   if (!channel) return;
   var embed = new Discord.RichEmbed()
   .setTitle("Emoji Deleted")
@@ -152,6 +156,45 @@ bot.on("message", (message) => {
       message.delete()
       message.author.send("You need to send the bot's ID in order for your bot to be invited!")
     }}}); // This is ALSO for my discord server, you should probably create your own bot if you want this ;)
+
+bot.on("message", (message) => {
+    const thisConf = bot.settings.get(message.guild.id);
+  const channel = message.guild.channels.find('name', `${thisConf.modLogChannel}`);
+  if (message.channel.name === `${thisConf.modLogChannel}`) {
+    const letters = {
+      "a" : "b"
+      "b" : "c"
+      "c" : "d"
+      "d" : "hi"
+      "e" : "hi"
+      "f" : "hi"
+      "g" : "hi"
+      "h" : "hi"
+      "i" : "hi"
+      "j" :  "hi"
+      "k" : "hi"
+      "l" : "hi"
+      "m" : "hi"
+      "n" : "hi"
+      "o" : "hi"
+      "p" : "hi"
+      "q" : "hi"
+      "r" : "hi"
+      "s" : "hi"
+      "t" : "hi"
+      "u" : "hi"
+      "v" : "hi"
+      "w" : "hi"
+      "x" : "hi"
+      "y" : "hi"
+      "z" : "hi"
+    }
+      if (!letters[message.content.toUpperCase().includes]) {
+    message.delete()
+    message.author.send("Do not talk in the mod log channel!") 
+}}});
+      
+    
 
 
 
