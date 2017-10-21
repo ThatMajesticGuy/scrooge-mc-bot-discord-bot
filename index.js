@@ -162,31 +162,31 @@ bot.on("message", (message) => {
   const channel = message.guild.channels.find('name', `${thisConf.modLogChannel}`);
   if (message.channel.name === `${thisConf.modLogChannel}`) {
     const letters = {
-      "a" : "b"
-      "b" : "c"
-      "c" : "d"
-      "d" : "hi"
-      "e" : "hi"
-      "f" : "hi"
-      "g" : "hi"
-      "h" : "hi"
-      "i" : "hi"
-      "j" :  "hi"
-      "k" : "hi"
-      "l" : "hi"
-      "m" : "hi"
-      "n" : "hi"
-      "o" : "hi"
-      "p" : "hi"
-      "q" : "hi"
-      "r" : "hi"
-      "s" : "hi"
-      "t" : "hi"
-      "u" : "hi"
-      "v" : "hi"
-      "w" : "hi"
-      "x" : "hi"
-      "y" : "hi"
+      "a" : "b",
+      "b" : "c",
+      "c" : "d",
+      "d" : "hi",
+      "e" : "hi",
+      "f" : "hi",
+      "g" : "hi",
+      "h" : "hi",
+      "i" : "hi",
+      "j" :  "hi",
+      "k" : "hi",
+      "l" : "hi",
+      "m" : "hi",
+      "n" : "hi",
+      "o" : "hi",
+      "p" : "hi",
+      "q" : "hi",
+      "r" : "hi",
+      "s" : "hi",
+      "t" : "hi",
+      "u" : "hi",
+      "v" : "hi",
+      "w" : "hi",
+      "x" : "hi",
+      "y" : "hi",
       "z" : "hi"
     }
       if (!letters[message.content.toUpperCase().includes]) {
