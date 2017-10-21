@@ -158,6 +158,7 @@ bot.on("message", (message) => {
     }}}); // This is ALSO for my discord server, you should probably create your own bot if you want this ;)
 
 bot.on("message", (message) => {
+   if (message.author.bot) return;
     const thisConf = bot.settings.get(message.guild.id);
   const channel = message.guild.channels.find('name', `${thisConf.modLogChannel}`);
   if (message.channel.name === `${thisConf.modLogChannel}`) {
