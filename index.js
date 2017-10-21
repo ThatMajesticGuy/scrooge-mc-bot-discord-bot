@@ -92,6 +92,17 @@ guild.createChannel('welcome', 'text')
   .catch(console.error));
 });
 
+bot.on("message", (message) => {
+   if (message.channel.id === "346074649479741452") {
+  const responseObject = {
+  "@everyone": "this isnt important",
+  "@here": "no this isnt important either"
+}
+  if (!responseObject[message.content.toUpperCase().includes]) {
+    message.delete()
+    message.author.send("Please make REAL announcements!") // this is for another server
+}}});
+
 bot.on("emojiUpdate", (emoji) => {
   const channel = emoji.guild.channels.find('name', 'mod-log');
   if (!channel) return;
