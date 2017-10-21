@@ -129,7 +129,7 @@ bot.on("emojiCreate", (emoji) => {
 
 bot.on("messageDelete", (message) => {
    const thisConf = bot.settings.get(message.guild.id);
-  const channel = emoji.guild.channels.find('name', `${thisConf.modLogChannel}`);
+  const channel = message.guild.channels.find('name', `${thisConf.modLogChannel}`);
   if (!channel) return;
   var embed = new Discord.RichEmbed()
   .setTitle("Message Deleted")
