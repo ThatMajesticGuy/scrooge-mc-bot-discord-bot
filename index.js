@@ -116,7 +116,7 @@ bot.on("emojiUpdate", (emoji) => {
 });
 
 bot.on("emojiCreate", (emoji) => {
-    const thisConf = bot.settings.get(message.guild.id);
+    const thisConf = bot.settings.get(emoji.guild.id);
   const channel = emoji.guild.channels.find('name', `${thisConf.modLogChannel}`);
   if (!channel) return;
   var embed = new Discord.RichEmbed()
@@ -140,7 +140,7 @@ bot.on("messageDelete", (message) => {
 });
 
 bot.on("emojiDelete", (emoji) => {
-  const thisConf = bot.settings.get(message.guild.id);
+  const thisConf = bot.settings.get(emoji.guild.id);
   const channel = emoji.guild.channels.find('name', `${thisConf.modLogChannel}`);
   if (!channel) return;
   var embed = new Discord.RichEmbed()
