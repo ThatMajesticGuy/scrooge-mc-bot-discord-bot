@@ -211,8 +211,8 @@ if (blockedusers.indexOf(message.author.id) > -1) return message.channel.send({ 
 
 if (command === "setPrefix") {
   if (!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send(`__**Access Denied**__\nYou must have __MANAGE_GUILD__ perms to use this command.`); // Checks for permissions to change the prefix
-  const newPrefix = args.slice(1).join(" ");
-  if (!args) return message.reply("You must include a prefix!")
+  const newPrefix = args1.slice(1).join(" ");
+  if (!args1) return message.reply("You must include a prefix!")
   guilds[message.guild.id].prefix = newPrefix; 
   message.channel.send(`The prefix for **${message.guild.name}** is now **${newPrefix}**`); // reply with the new sexy prefix!
 }
