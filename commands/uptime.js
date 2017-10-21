@@ -10,11 +10,16 @@ String.prototype.toHHMMSS = function () {
     if (hours   < 10) {hours   = "0"+hours;}
     if (minutes < 10) {minutes = "0"+minutes;}
     if (seconds < 10) {seconds = "0"+seconds;}
-    var time    = hours+ 'Hours:' +minutes+ 'Minutes: and' +seconds+ 'seconds';
+   var time    = "**"+hours+ '** Hours ,**' +minutes+ '** Minutes ,**' +seconds+ ' **seconds';
     return time;
 }
 
     var time = process.uptime();
     var uptime = (time + "").toHHMMSS();
-    message.channel.send(`I have been up for ${uptime}`);
+    var embed = new Discord.RichEmbed()
+    .setTitle("Uptime :clock3:")
+    .setColor("#42f4ee")
+    .setThumbnail("http://www.mobiletoones.com/downloads/wallpapers/animation_wallpapers/preview/18/p19498-1231353003.gif")
+    .addField("I have been up for:", `${uptime}`)
+    message.channel.send({ embed: embed })
 };
