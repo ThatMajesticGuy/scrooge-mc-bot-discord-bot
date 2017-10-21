@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 
-exports.run = async (bot, msg) => {
+exports.run = async (bot, message) => {
   const user = message.mentions.users.first();
 if (!user) {
   var embed = new Discord.RichEmbed()
@@ -16,4 +16,4 @@ if (!user) {
   .setURL(user.avatarURL)
   .setThumbnail(user.displayAvatarURL)
   message.channel.send({ embed: embed2 })
-};
+}};
