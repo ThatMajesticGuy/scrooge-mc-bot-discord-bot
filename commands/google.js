@@ -21,10 +21,10 @@ exports.run = async (bot, msg) => {
     if (args.length < 1) {
         msg.channel.send('You must enter something to search for!');
     }
-
+var join = args.join(" ")
     await msg.channel.send(':arrows_counterclockwise: Searching...');
 
-    const res = await got(`https://google.com/search?${QUERY_STRING_SETTINGS}&q=${encodeURIComponent(args.join(' '))}`);
+    const res = await got(`https://google.com/search?${QUERY_STRING_SETTINGS}&q=${encodeURIComponent(args.join(" "))}`);
     if (res.statusCode !== 200) {
         return msg.edit(`:no_entry_sign: Error! (${res.statusCode}): ${res.statusmsg}`);
     }
