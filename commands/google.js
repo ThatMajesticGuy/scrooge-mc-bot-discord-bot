@@ -49,6 +49,6 @@ exports.run = async (bot, msg, args) => {
         .join('\n');
 
 
-        msg.reply(`Search results for: \n \`${args.join(' ')}\` is ${output})
+        msg.reply(`Search results for: \n \`${args.join(' ')}\` is ${output}`)
 };
 
