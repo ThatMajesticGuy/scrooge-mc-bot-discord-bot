@@ -24,7 +24,7 @@ exports.run = async (bot, msg, args) => {
 
     const res = await got(`https://google.com/search?${QUERY_STRING_SETTINGS}&q=${encodeURIComponent(args.join(' '))}`);
     if (res.statusCode !== 200) {
-        return msg.edit(`:no_entry_sign: Error! (${res.statusCode}): ${res.statusMessage}`);
+        return msg.(`:no_entry_sign: Error! (${res.statusCode}): ${res.statusMessage}`);
     }
 
     let $ = cheerio.load(res.body);
@@ -48,8 +48,7 @@ exports.run = async (bot, msg, args) => {
         .map(r => `${r.link}\n\t${r.description}\n`)
         .join('\n');
 
-    msg.edit({
-        embed: bot.utils.embed(`Search results for \`"${args.join(' ')}"\``, output)
-    });
+
+        msg.channel.send(`Search results for: \n \`${args.join(' ')}\` is ${output})
 };
 
