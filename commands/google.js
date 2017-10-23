@@ -20,7 +20,7 @@ exports.run = async (bot, msg, args) => {
         message.channel.send('You must enter something to search for!');
     }
 
-    await msg.edit(':arrows_counterclockwise: Searching...');
+    await msg.channel.send(':arrows_counterclockwise: Searching...');
 
     const res = await got(`https://google.com/search?${QUERY_STRING_SETTINGS}&q=${encodeURIComponent(args.join(' '))}`);
     if (res.statusCode !== 200) {
