@@ -1,6 +1,5 @@
 const got = require('got');
 const cheerio = require('cheerio');
-const Discord = require('discord.js');
 
 const QUERY_STRING_SETTINGS = [
     'client=chrome',
@@ -16,17 +15,16 @@ function getText(children) {
     }).join('');
 }
 
-exports.run = async (bot, msg) => {
-      var args = msg.content.split(' ').slice(1).join(' ');
+exports.run = async (bot, msg, args) => {
     if (args.length < 1) {
-        msg.channel.send('You must enter something to search for!');
+        message.channel.send('You must enter something to search for!');
     }
-var join = args.join(" ")
-    await msg.channel.send(':arrows_counterclockwise: Searching...');
 
-    const res = await got(`https://google.com/search?${QUERY_STRING_SETTINGS}&q=${encodeURIComponent(args.join(" "))}`);
+    await msg.edit(':arrows_counterclockwise: Searching...');
+
+    const res = await got(`https://google.com/search?${QUERY_STRING_SETTINGS}&q=${encodeURIComponent(args.join(' '))}`);
     if (res.statusCode !== 200) {
-        return msg.edit(`:no_entry_sign: Error! (${res.statusCode}): ${res.statusmsg}`);
+        return msg.edit(`:no_entry_sign: Error! (${res.statusCode}): ${res.statusMessage}`);
     }
 
     let $ = cheerio.load(res.body);
@@ -46,9 +44,12 @@ var join = args.join(" ")
     });
 
     let output = results.filter(r => r.link && r.description)
-        .slice(0, 1)
+        .slice(0, 5)
         .map(r => `${r.link}\n\t${r.description}\n`)
         .join('\n');
 
-        msg.channel.send(`Search results for ${args.join(' ')} \n ${output}`)
-    };
+    msg.edit({
+        embed: bot.utils.embed(`Search results for \`"${args.join(' ')}"\``, output)
+    });
+};
+
