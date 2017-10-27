@@ -136,7 +136,7 @@ bot.on("messageDelete", (message) => {
   .setTitle("Message Deleted")
   .setColor("#4bf442")
   .setThumbnail("https://cdn2.iconfinder.com/data/icons/happy-objects/512/dustbin_smile_smiley_emotion_happy-512.png")
-  .addField(`${message.author.username} has deleted this message:`, `${message}`)
+  .addField(`${message.author.username} has deleted this message:`, `The message is ${message}`)
   channel.send({ embed: embed })
 });
 
