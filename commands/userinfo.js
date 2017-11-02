@@ -24,7 +24,7 @@ const status = {
   if (!user) {
   	
   	
-let embed = new _discord.RichEmbed()
+let embed = new Discord.RichEmbed()
   .setColor(randomColor)
   .setThumbnail(`${message.author.displayAvatarURL}`, true)
   .addField("Username + tag", `${message.author.message.username}#${message.author.discriminator}`, true)
@@ -42,7 +42,7 @@ message.channel.send({embed});
 	let botuser;
   if (member.user.bot === true) botuser = 'Yes'
   else botuser = 'No'
-	let embed = new _discord.RichEmbed()
+	let embed = new Discord.RichEmbed()
   .setColor(randomColor)
   .setThumbnail(`${user.displayAvatarURL}`, true)
   .addField("Username + tag", `${user.username}#${user.discriminator}`, true)
